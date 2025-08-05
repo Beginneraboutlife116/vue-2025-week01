@@ -179,16 +179,16 @@ function resetChanges() {
     <tbody>
       <tr v-for="item in items" :key="item.id">
         <td>
-          <input v-if="item.isEditing" v-model="item.name" type="text" />
-          <span v-else>{{ item.name }}</span>
+          <input v-show="item.isEditing" v-model="item.name" type="text" />
+          <span v-show="!item.isEditing">{{ item.name }}</span>
         </td>
         <td>
-          <input v-if="item.isEditing" v-model="item.description" type="text" />
-          <small v-else>{{ item.description }}</small>
+          <input v-show="item.isEditing" v-model="item.description" type="text" />
+          <small v-show="!item.isEditing">{{ item.description }}</small>
         </td>
         <td>
-          <input v-if="item.isEditing" v-model="item.price" type="number" />
-          <span v-else>{{ item.price }}</span>
+          <input v-show="item.isEditing" v-model="item.price" type="number" />
+          <span v-show="!item.isEditing">{{ item.price }}</span>
         </td>
         <td>
           <button @click="removeItem(item.id)">-</button>
@@ -196,8 +196,8 @@ function resetChanges() {
           <button @click="addItem(item.id)">+</button>
         </td>
         <td>
-          <button v-if="item.isEditing" @click="clickEditButton(item.id)">儲存</button>
-          <button v-if="!item.isEditing" @click="clickEditButton(item.id)">修改</button>
+          <button v-show="item.isEditing" @click="clickEditButton(item.id)">儲存</button>
+          <button v-show="!item.isEditing" @click="clickEditButton(item.id)">修改</button>
         </td>
       </tr>
     </tbody>
